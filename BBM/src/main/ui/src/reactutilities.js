@@ -1,24 +1,23 @@
-// import React from 'react';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-// import { capitaliseFirstLetter, createDate } from './utilities';
-// import PropTypes from 'prop-types';
+import React from 'react';
+ import Row from 'react-bootstrap/Row';
+ import Col from 'react-bootstrap/Col';
+ import { capitaliseFirstLetter, createDate } from './utilities';
+import PropTypes from 'prop-types';
 
+ class FormatCredit extends React.Component{
+     render() {
+         const { id, notes, performer, role } = this.props;
+         return (
+      <Row key={id}><Col>{capitaliseFirstLetter(role)}{notes === "" ? "" : <> ({notes})</>}:</Col><Col>{performer}</Col></Row>);
+ }
+ }
 
-// class FormatCredit extends React.Component{
-//     render() {
-//         const { id, notes, performer, role } = this.props;
-//         return (
-//      <Row key={id}><Col>{capitaliseFirstLetter(role)}{notes === "" ? "" : <> ({notes})</>}:</Col><Col>{performer}</Col></Row>);
-// }
-// }
-
-// FormatCredit.propTypes = {
-//     id: PropTypes.number.isRequired,
-//     notes: PropTypes.string.isRequired,
-//     performer: PropTypes.string.isRequired,
-//     role: PropTypes.string.isRequired
-//   }
+ FormatCredit.propTypes = {
+     id: PropTypes.number.isRequired,
+     notes: PropTypes.string.isRequired,
+     performer: PropTypes.string.isRequired,
+     role: PropTypes.string.isRequired
+   }
 
 // class FormatRecordingDate extends React.Component{
 //     render() {
@@ -38,4 +37,5 @@
 //     })
 //   }
 
-// export { FormatCredit, FormatRecordingDate };
+ //export { FormatCredit, FormatRecordingDate };
+ export { FormatCredit };

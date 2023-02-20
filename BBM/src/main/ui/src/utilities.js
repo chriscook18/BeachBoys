@@ -1,21 +1,22 @@
 
-// function getArtistName(artist) {
+function getArtistName(artist) {
 
-//     var sName;
+    var sName;
 
-//     if (artist.isGroup) {
-//         sName = artist.groupName;
-//     } else {
-//         sName = artist.firstName + " " + artist.surname;
-//     }
+    if (artist.isGroup) {
+        sName = artist.groupName;
+    } else {
+        sName = artist.firstName + " " + artist.surname;
+    }
 
-//     return sName;
-// }
+    return sName;
+}
 
-// function capitaliseFirstLetter(string) {
-//     return string[0].toUpperCase() + string.slice(1);
+//TODO: Really?
+function capitaliseFirstLetter(string) {
+    return string[0].toUpperCase() + string.slice(1);
 
-// }
+}
 
 // function createDate(year, month, day) {
 //     var dateString = "";
@@ -64,7 +65,7 @@
 // }
 
 
-// export { getArtistName  };
-// export { capitaliseFirstLetter };
+ export { getArtistName  };
+ export { capitaliseFirstLetter };
 // export { createDate};
 // export { formatDateRangeSession };

@@ -18,6 +18,7 @@ import HeaderRow from './headerRow.js';
  import { Helmet } from 'react-helmet-async';
 import { getArtistName } from './recordingUtilities';
 import FirstReleaseDate from './firstReleaseDate.js';
+import WriterRow from './writerRow.js';
 
 
 class RecordingDetails extends React.Component {
@@ -71,7 +72,7 @@ class RecordingDetails extends React.Component {
                       <Col data-testid = "artistCol">{getArtistName(recording.artist)}</Col>
                     </Row>
                     <FirstReleaseDate/>
-
+                    <WriterRow song={recording.song.id} credits={credits} />
                     </Container>
                   </Card.Body>
                   </Card>
