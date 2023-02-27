@@ -26,7 +26,7 @@ import RecordingDetails from './recordingDetails.js';
      isCreditsLoaded: false,
      recording: {},
      credits: [],
-//     creditsError: null,
+     creditsError: false,
      recordingsError: false,
    }
 
@@ -35,7 +35,7 @@ import RecordingDetails from './recordingDetails.js';
 //     //const { recordingID } = this.props.match.params;
      //const { recordingID } = 1;
      this.fetchRecording(1);
-//     this.fetchCredits(recordingID);
+     this.fetchCredits(1);
    }
 
 
@@ -140,18 +140,18 @@ import RecordingDetails from './recordingDetails.js';
 	   }
 	
 
-//   fetchCredits(iRecordingID) {
-//     // eslint-disable-next-line no-undef
-//     fetch(constants.BASE_URL + `/recording/` + iRecordingID + `/credits/`)
-//       .then(response => response.json())
-//       .then(data =>
-//         this.setState({
-//           credits: data.data,
-//           isCreditsLoaded: true,
-//         })
-//       )
-//       .catch(creditsError => this.setState({ creditsError, isCreditsLoaded: true, credits: [] }));
-//   }
+   fetchCredits(iRecordingID) {
+    // eslint-disable-next-line no-undef
+    fetch(constants.BASE_URL + `/recordings/` + iRecordingID + `/credits`)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          credits: data,
+          isCreditsLoaded: true,
+        })
+      )
+      .catch(creditsError => this.setState({ creditsError, isCreditsLoaded: true, credits: [] }));
+  }
 
 }
 // RecordingDisplay.propTypes = {

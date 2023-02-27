@@ -19,6 +19,7 @@ import HeaderRow from './headerRow.js';
 import { getArtistName } from './recordingUtilities';
 import FirstReleaseDate from './firstReleaseDate.js';
 import WriterRow from './writerRow.js';
+import ProducerRow from './ProducerRow.js';
 
 
 class RecordingDetails extends React.Component {
@@ -26,6 +27,8 @@ class RecordingDetails extends React.Component {
     render() {
       const { recording, credits, isRecordingLoaded, isCreditsLoaded } = this.props;
  
+      console.log("Recording details credits " + credits);
+
  //     if (isRecordingLoaded) {
  //       var sTitle = [recording.title ? recording.title : recording.song.title];
  
@@ -73,6 +76,7 @@ class RecordingDetails extends React.Component {
                     </Row>
                     <FirstReleaseDate/>
                     <WriterRow song={recording.song.id} credits={credits} />
+                    <ProducerRow credits={credits} isLoaded={isCreditsLoaded} />
                     </Container>
                   </Card.Body>
                   </Card>

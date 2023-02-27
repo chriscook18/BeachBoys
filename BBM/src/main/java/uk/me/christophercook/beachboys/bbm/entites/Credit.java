@@ -13,19 +13,23 @@ public class Credit {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "song", nullable = false)
-    private Song song;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "recording", nullable = false)
+    private Recording recording;
 
-    @ManyToOne( fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne( fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "performer", nullable = false)
     private People performer;
 
-    @ManyToOne( fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne( fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "role", nullable = false)
     private Role role;
 
     private String notes;
 
-
+    public Credit(Recording recording, People performer, Role role) {
+        this.recording = recording;
+        this.performer = performer;
+        this.role = role;
+    }
 }

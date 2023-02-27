@@ -1,10 +1,14 @@
 package uk.me.christophercook.beachboys.bbm.entites;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "recordings")
@@ -37,6 +41,8 @@ public class Recording {
 
     private Long image;
 
-    //TODO?
+    @OneToMany(mappedBy = "recording", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Credit> creditsList = new ArrayList<>();
 
 }

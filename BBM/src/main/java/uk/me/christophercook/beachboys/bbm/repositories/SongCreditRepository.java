@@ -3,11 +3,13 @@ package uk.me.christophercook.beachboys.bbm.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import uk.me.christophercook.beachboys.bbm.entites.Song;
 import uk.me.christophercook.beachboys.bbm.entites.SongCredit;
 
 import java.util.List;
 
+@Repository
 public interface SongCreditRepository extends JpaRepository<SongCredit, Long> {
 
     //TODO tests
