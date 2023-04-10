@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import uk.me.christophercook.beachboys.bbm.entites.Credit;
 import uk.me.christophercook.beachboys.bbm.entites.Recording;
 import uk.me.christophercook.beachboys.bbm.entites.Song;
+import uk.me.christophercook.beachboys.bbm.entites.Version;
 import uk.me.christophercook.beachboys.bbm.repositories.RecordingRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -55,6 +56,19 @@ public class RecordingController {
         Optional<Recording> recordingOptional = recordingRepository.findById(Long.valueOf(Integer.parseInt(id)));
         if (recordingOptional.isPresent()){
             return recordingOptional.get().getCreditsList();
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    @GetMapping(value = "/{id}/versions")
+    //TODO validation on path varaible?
+    //TODO why are they strings not int??
+    public List<Version> getVersionsById(@PathVariable(value = "id") String id )
+    {
+        Optional<Recording> recordingOptional = recordingRepository.findById(Long.valueOf(Integer.parseInt(id)));
+        if (recordingOptional.isPresent()){
+            return recordingOptional.get().getVersionList();
         } else {
             return new ArrayList<>();
         }

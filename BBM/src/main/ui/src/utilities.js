@@ -18,33 +18,33 @@ function capitaliseFirstLetter(string) {
 
 }
 
-// function createDate(year, month, day) {
-//     var dateString = "";
+function createDate(year, month, day) {
+    var dateString = "";
 
-//     const monthNames = ["January", "February", "March", "April", "May", "June",
-//   "July", "August", "September", "October", "November", "December"
-//     ];
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+    ];
 
-//     switch (true) {
-//         case year === 0:
-//             dateString = "Unknown";
-//             break;
+    switch (true) {
+        case year === 0:
+            dateString = "Unknown";
+            break;
 
-//         case month === 0:
-//             dateString = String(year);
-//             break;
+        case month === 0:
+            dateString = String(year);
+            break;
 
-//         case day === undefined ||  day === 0:
-//             dateString =monthNames[month-1] + " " + String(year);
-//             break;
+        case day === undefined ||  day === 0:
+            dateString =monthNames[month-1] + " " + String(year);
+            break;
 
-//         default:
-//             dateString =  String(day) + " " + monthNames[month-1] + " " + String(year);
-//     }
+        default:
+            dateString =  String(day) + " " + monthNames[month-1] + " " + String(year);
+    }
     
-//     return dateString;
+    return dateString;
 
-// }
+}
 
 // function formatDateRangeSession(session) {
 //     return formatDateRange(session.yearstart, session.monthstart, session.daystart, session.yearend, session.monthend, session.dayend);
@@ -67,5 +67,5 @@ function capitaliseFirstLetter(string) {
 
  export { getArtistName  };
  export { capitaliseFirstLetter };
-// export { createDate};
+ export { createDate};
 // export { formatDateRangeSession };

@@ -45,4 +45,8 @@ public class Recording {
     @JsonIgnore
     private List<Credit> creditsList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "recording", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Version> versionList = new ArrayList<>();
+
 }

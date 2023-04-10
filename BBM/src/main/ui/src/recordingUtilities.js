@@ -7,7 +7,6 @@ export function getRecordingPageTitle(recording) {
 
 export function getArtistName(artist) {
 
-   console.log(artist);
 
        var sName;
    
@@ -17,7 +16,6 @@ export function getArtistName(artist) {
             sName = artist.firstName + " " + artist.surname;
         }
    
-        console.log(sName);
        return sName;
     }
    

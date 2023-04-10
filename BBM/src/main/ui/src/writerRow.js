@@ -22,7 +22,6 @@ import { getArtistName, createDate } from './utilities.js';
    render() {
      const { error, isLoaded, songCredits } = this.state;
      const { credits } = this.props;
-     console.log(credits);
 
 // TODO clean up the lambdas / test them
 //TODO key = 43???? seems a silly attempt to fix a warning
