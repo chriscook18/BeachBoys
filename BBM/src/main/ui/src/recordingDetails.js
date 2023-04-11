@@ -8,7 +8,7 @@ import Image from 'react-bootstrap/Image';
 // import ListGroup from 'react-bootstrap/ListGroup';
 // import Tab from 'react-bootstrap/Tab';
 
-import * as constants from './constants.js';
+import * as constants from './Constants.js';
 import PropTypes from 'prop-types';
 // import { getArtistName, createDate } from './utilities';
 // import { FormatCredit } from './reactutilities.js';

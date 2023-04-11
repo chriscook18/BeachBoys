@@ -8,147 +8,179 @@ import Row from 'react-bootstrap/Row';
 // import ListGroup from 'react-bootstrap/ListGroup';
 // import Tab from 'react-bootstrap/Tab';
 
- import * as constants from './constants.js';
- //import PropTypes from 'prop-types';
+import * as constants from './Constants.js';
+//import PropTypes from 'prop-types';
 // import { getArtistName, createDate } from './utilities';
 // import { FormatCredit } from './reactutilities.js';
 import HeaderRow from './headerRow.js';
 // import FooterRow from './footerrow.js';
 // import './index.css';
- import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 import { getRecordingPageTitle } from './recordingUtilities';
 import RecordingDetails from './recordingDetails.js';
 import PersonnelBox from './PersonnelBox.js';
 import NotesBox from './NotesBox.js';
 import VersionsBox from './VersionsBox.js';
 
- class RecordingDisplay extends React.Component {
- 
-   state = {
-     isRecordingLoaded: false,
-     isCreditsLoaded: false,
-     recording: {},
-     credits: [],
-     creditsError: false,
-     recordingsError: false,
-   }
+class RecordingDisplay extends React.Component {
+  state = {
+    isRecordingLoaded: false,
+    isCreditsLoaded: false,
+    recording: {},
+    credits: [],
+    creditsError: false,
+    recordingsError: false,
+  };
 
-   componentDidMount() {
-//     //TODO 
-//     //const { recordingID } = this.props.match.params;
-     //const { recordingID } = 1;
-     this.fetchRecording(1);
-     this.fetchCredits(1);
-   }
+  componentDidMount() {
+    //     //TODO
+    //     //const { recordingID } = this.props.match.params;
+    //const { recordingID } = 1;
+    this.fetchRecording(1);
+    this.fetchCredits(1);
+  }
 
+  render() {
+    const {
+      isRecordingLoaded,
+      isCreditsLoaded,
+      recording,
+      credits,
+      recordingsError,
+      creditsError,
+    } = this.state;
 
-   render() {
-     const { isRecordingLoaded, isCreditsLoaded, recording, credits, recordingsError, creditsError } = this.state;
+    if (isCreditsLoaded) {
+      credits &&
+        credits.sort(function (a, b) {
+          var keyA;
+          var keyB;
 
-         if (isCreditsLoaded) {
-      credits && credits.sort(function (a, b) {
-        var keyA;
-        var keyB;
+          if (a.role.roletype.sortpriorty === 0) {
+            keyA = 100 + a.role.roletype.id;
+          } else {
+            keyA = a.role.roletype.sortpriority;
+          }
 
-        if (a.role.roletype.sortpriorty === 0) {
-          keyA = 100 + a.role.roletype.id;
-        } else {
-          keyA = a.role.roletype.sortpriority;
-        }
+          if (b.role.roletype.sortpriorty === 0) {
+            keyB = 100 + b.role.roletype.id;
+          } else {
+            keyB = b.role.roletype.sortpriority;
+          }
 
-        if (b.role.roletype.sortpriorty === 0) {
-          keyB = 100 + b.role.roletype.id;
-        } else {
-          keyB = b.role.roletype.sortpriority;
-        }
-
-        if (keyA === keyB) {
-          //Same type, sort by description
-          var keyC = a.role.description;
-          var keyD = b.role.description;
-          if (keyC < keyD) return -1;
-          if (keyC > keyD) return 1;
-
-        }
-        if (keyA < keyB) return -1;
-        if (keyA > keyB) return 1;
-        return 0;
-      });
+          if (keyA === keyB) {
+            //Same type, sort by description
+            var keyC = a.role.description;
+            var keyD = b.role.description;
+            if (keyC < keyD) return -1;
+            if (keyC > keyD) return 1;
+          }
+          if (keyA < keyB) return -1;
+          if (keyA > keyB) return 1;
+          return 0;
+        });
     }
 
-      // TODO seems bad to do so much in this class?
-       //TODO refactor to test the recordingsError case
-       //TODO eww nested ternaries
+    // TODO seems bad to do so much in this class?
+    //TODO refactor to test the recordingsError case
+    //TODO eww nested ternaries
     return (
-       <>
-       <Container><Row><HeaderRow />
-       
-       {recordingsError ? <p key={2}>Failed to load recording: {recordingsError.message}. Return <a href="/">home</a></p> :
-       
-       [recording && isRecordingLoaded ? 
-        <>
-       <Helmet key={4}>
-             {getRecordingPageTitle(recording)}
-         </Helmet>
-          <RecordingDetails recording={recording} credits={credits} isRecordingLoaded={isRecordingLoaded} isCreditsLoaded={isCreditsLoaded} />
-          <PersonnelBox credits={credits} isLoaded={isCreditsLoaded} error={creditsError} />
-          {recording.notes ? <NotesBox notes={recording.notes} isLoaded={isRecordingLoaded} error={recordingsError} /> : ""}
-          <VersionsBox recordingID={1} songperformer={recording.artist} />
-</>
-         :  <p key={3}>Failed to load recording. Return <a href="/">home</a></p> ]
+      <>
+        <Container>
+          <Row>
+            <HeaderRow />
 
-}
-       
-       
-       </Row>
-       
-       
-       
-         </Container>
-       </>
-//             {recording.notes ? <NotesBox notes={recording.notes} isLoaded={isRecordingLoaded} error={recordingsError} /> : ""}
-//             <VersionsBox recordingID={recordingID} songperformer={recording.artist} />
-//             <OtherRecordingsBox recordingID={recordingID} songID={recording.song.id}/>
-//           </>
-//             : <p>Failed to load recording. Return <a href="/">home</a></p>]}
-//         <FooterRow/></Row></Container>
-    //   </>
-     )
-   }
-	
-	   //TODO test
-      //TODO generalise the fetchs?
-	   fetchRecording(recordingID) {
+            {recordingsError ? (
+              <p key={2}>
+                Failed to load recording: {recordingsError.message}. Return{' '}
+                <a href="/">home</a>
+              </p>
+            ) : (
+              [
+                recording && isRecordingLoaded ? (
+                  <>
+                    <Helmet key={4}>{getRecordingPageTitle(recording)}</Helmet>
+                    <RecordingDetails
+                      recording={recording}
+                      credits={credits}
+                      isRecordingLoaded={isRecordingLoaded}
+                      isCreditsLoaded={isCreditsLoaded}
+                    />
+                    <PersonnelBox
+                      credits={credits}
+                      isLoaded={isCreditsLoaded}
+                      error={creditsError}
+                    />
+                    {recording.notes ? (
+                      <NotesBox
+                        notes={recording.notes}
+                        isLoaded={isRecordingLoaded}
+                        error={recordingsError}
+                      />
+                    ) : (
+                      ''
+                    )}
+                    <VersionsBox
+                      recordingID={1}
+                      songperformer={recording.artist}
+                    />
+                  </>
+                ) : (
+                  <p key={3}>
+                    Failed to load recording. Return <a href="/">home</a>
+                  </p>
+                ),
+              ]
+            )}
+          </Row>
+        </Container>
+      </>
+      //             {recording.notes ? <NotesBox notes={recording.notes} isLoaded={isRecordingLoaded} error={recordingsError} /> : ""}
+      //             <VersionsBox recordingID={recordingID} songperformer={recording.artist} />
+      //             <OtherRecordingsBox recordingID={recordingID} songID={recording.song.id}/>
+      //           </>
+      //             : <p>Failed to load recording. Return <a href="/">home</a></p>]}
+      //         <FooterRow/></Row></Container>
+      //   </>
+    );
+  }
 
-	
-	     fetch(constants.BASE_URL + `/recordings/` + recordingID)
-	       .then(response => response.json())
-	       .then(data =>{
-	                  //console.log(data)
-	                  this.setState({
-	                    recording: data,
-	                   isRecordingLoaded: true,
-	                  })})
-	      .catch(recordingsError => this.setState({ recordingsError, isRecordingLoaded: false, recording: {} }));
-	   }
-	
+  //TODO test
+  //TODO generalise the fetchs?
+  fetchRecording(recordingID) {
+    fetch(constants.BASE_URL + `/recordings/` + recordingID)
+      .then((response) => response.json())
+      .then((data) => {
+        //console.log(data)
+        this.setState({
+          recording: data,
+          isRecordingLoaded: true,
+        });
+      })
+      .catch((recordingsError) =>
+        this.setState({
+          recordingsError,
+          isRecordingLoaded: false,
+          recording: {},
+        })
+      );
+  }
 
-   fetchCredits(iRecordingID) {
+  fetchCredits(iRecordingID) {
     // eslint-disable-next-line no-undef
     fetch(constants.BASE_URL + `/recordings/` + iRecordingID + `/credits`)
-      .then(response => response.json())
-      .then(data =>
+      .then((response) => response.json())
+      .then((data) =>
         this.setState({
           credits: data,
           isCreditsLoaded: true,
         })
       )
-      .catch(creditsError => this.setState({ creditsError, isCreditsLoaded: true, credits: [] }));
+      .catch((creditsError) =>
+        this.setState({ creditsError, isCreditsLoaded: true, credits: [] })
+      );
   }
-
 }
-
-
 
 // /* class RecordingDates extends React.Component {
 
@@ -176,9 +208,7 @@ import VersionsBox from './VersionsBox.js';
 //   isLoaded: PropTypes.bool.isRequired
 // } */
 
-
-// 
-
+//
 
 // class OtherRecordingsBox extends React.Component {
 
@@ -204,7 +234,7 @@ import VersionsBox from './VersionsBox.js';
 //         <Card.Text key={47}>Failed to load recording details: {recordingsError.message}</Card.Text>
 //         : [!isRecordingLoaded? <Card.Text key={48}>Loading...</Card.Text>
 //           : <ListGroup key={878678} variant="flush">{recordings && recordings.map(recording => {
-//             return ([recording.id !== this.props.recordingID && !recording.hide ?  
+//             return ([recording.id !== this.props.recordingID && !recording.hide ?
 //               <ListGroup.Item key={"otherrecording" + recording.id}><a href={'/beachboys/recording/' + recording.id}>{recording.title} (from the <i>{recording.session.name}</i> sessions)</a></ListGroup.Item> : "" ]);
 //           })}</ListGroup>]}
 //       </Card.Body>
@@ -224,8 +254,8 @@ import VersionsBox from './VersionsBox.js';
 //         })
 //       )
 //       .catch(recordingsError => this.setState({
-//         recordingsError, 
-//         isRecordingLoaded: true, 
+//         recordingsError,
+//         isRecordingLoaded: true,
 //         recordings: []
 //       }));
 //   }
@@ -236,7 +266,7 @@ import VersionsBox from './VersionsBox.js';
 //   recordingID: PropTypes.string.isRequired,
 //   songID: PropTypes.string.isRequired
 
-// } 
+// }
 
 // /* class QuotesBox extends React.Component {
 //   state = {
@@ -280,8 +310,8 @@ import VersionsBox from './VersionsBox.js';
 //         })
 //       )
 //       .catch(quotesError => this.setState({
-//         quotesError, 
-//         isQuotesLoaded: true, 
+//         quotesError,
+//         isQuotesLoaded: true,
 //         quotes: []
 //       }));
 //   }
@@ -293,8 +323,4 @@ import VersionsBox from './VersionsBox.js';
 
 // } */
 
-
-
 export default RecordingDisplay;
-
-
