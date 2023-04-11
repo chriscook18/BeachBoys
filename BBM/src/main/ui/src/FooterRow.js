@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 class FooterRow extends React.Component {
   render() {
     return (
-      <Card style={{ width: '100%' }}>
+      <Card style={{ width: '100%' }} data-testId="footerRow">
         © 2023 Christopher Cook, except for the album art images which are
         claimed under fair use. This website uses open source libraries.
       </Card>
