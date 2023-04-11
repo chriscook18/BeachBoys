@@ -33,6 +33,7 @@ class VersionsBox extends React.Component {
     this.fetchVersions();
   }
 
+  //TODO release date
   render() {
     const { versions, versionsError, isVersionsLoaded } = this.state;
     var { songperformer } = this.props;
