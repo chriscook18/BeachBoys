@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -43,6 +44,12 @@ public class Version {
 
     @Column(name = "youtube")
     private String youtube;
+
+    @Column(name = "firstreleased")
+    private Date firstReleased;
+
+    @Column(name = "firstreleasednotes")
+    private String firstReleasedNotes;
 
     @ManyToOne( fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "recording", nullable = false)
