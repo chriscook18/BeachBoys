@@ -16,7 +16,7 @@ import HeaderRow from './HeaderRow.js';
 // import FooterRow from './footerrow.js';
 // import './index.css';
 import { Helmet } from 'react-helmet-async';
-import { getRecordingPageTitle } from './R2ecordingUtilities.js';
+import { getRecordingPageTitle } from './RecordingUtilities.js/index.js';
 import RecordingDetails from './recordingDetails.js';
 import PersonnelBox from './PersonnelBox.js';
 import NotesBox from './NotesBox.js';
