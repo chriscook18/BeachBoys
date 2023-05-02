@@ -4,7 +4,7 @@ import * as constants from './Constants.js';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { getArtistName, createDate } from './utilities.js';
-import { FormatCredit } from './reactutilities.js';
+import { FormatCredit } from './CreditUtilities.js';
 
 class WriterRow extends React.Component {
   state = {

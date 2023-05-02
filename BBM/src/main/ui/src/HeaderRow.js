@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
-import * as constants from './Constants.js';
+import { IMAGE_REF } from './Constants.js';
 
 class HeaderRow extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class HeaderRow extends React.Component {
       <Card style={{ width: '100%' }}>
         <a href="/beachboys/list">
           <Image
-            src={constants.IMAGE_REF + 'Logo.png'}
+            src={IMAGE_REF + 'logo.png'}
             height="100%"
             width="30%"
             alt={'The Beach Boys Mixography logo'}

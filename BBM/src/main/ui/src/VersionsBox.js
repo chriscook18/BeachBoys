@@ -12,14 +12,14 @@ import * as constants from './Constants.js';
 import PropTypes from 'prop-types';
 import { createDate } from './utilities';
 // import { FormatCredit } from './reactutilities.js';
-import HeaderRow from './rHeaderRow.js';
+import HeaderRow from './HeaderRow.js';
 // import FooterRow from './footerrow.js';
 // import './index.css';
 import { Helmet } from 'react-helmet-async';
 import { getRecordingPageTitle } from './recordingUtilities';
 import RecordingDetails from './recordingDetails.js';
 import { capitaliseFirstLetter } from './utilities.js';
-import { FormatCredit } from './reactutilities.js';
+import { FormatCredit } from './CreditUtilities.js';
 import { getArtistName } from './recordingUtilities';
 
 class VersionsBox extends React.Component {
