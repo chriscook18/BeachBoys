@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as constants from './Constants.js';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { getArtistName, createDate } from './utilities.js';
+import { getArtistName, createDate } from './U2tilities.js';
 import { FormatCredit } from './CreditUtilities.js';
 
 class WriterRow extends React.Component {

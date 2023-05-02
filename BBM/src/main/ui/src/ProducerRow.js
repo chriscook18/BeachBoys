@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PropTypes from 'prop-types';
 import { FormatCredit } from './CreditUtilities';
-import { getArtistName } from './recordingUtilities';
+import { getArtistName } from './R2ecordingUtilities';
 
 class ProducerRow extends React.Component {
   render() {

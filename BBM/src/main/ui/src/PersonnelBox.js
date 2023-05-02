@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import PropTypes from 'prop-types';
 import { capitaliseFirstLetter } from './utilities.js';
 import { FormatCredit } from './CreditUtilities.js';
-import { getArtistName } from './recordingUtilities';
+import { getArtistName } from './R2ecordingUtilities.js';
 
 class PersonnelBox extends React.Component {
   render() {

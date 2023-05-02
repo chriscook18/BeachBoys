@@ -1,7 +1,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { capitaliseFirstLetter, createDate } from './utilities';
+import { capitaliseFirstLetter, createDate } from './U2tilities';
 import PropTypes from 'prop-types';
 
 class FormatCredit extends React.Component {
